@@ -8,7 +8,7 @@
             Contexto:
             Dado que estou na tela de checkout da EBAC-SHOP
 
-            Esquema do Cenário: Validação de campos obrigatórias
+            Esquema do Cenário: Validação de campos obrigatórios
             Dado que preencha os campos <nome>, <sobrenome>, <pais>, <endereco>, <cidade>, <cep>, <telefone> e <email>
             E tentar finalizar a compra
             Então o sistema deve exibir a <mensagem>
@@ -25,3 +25,17 @@
             | Joao | Silva Sauro | Brasil | Rua XV de Novembro   | São Miguel do Oeste |          | 49999999999 | joao@email.com | Informe o CEP                 | Não finalizar compra do usuário |
             | Joao | Silva Sauro | Brasil | Rua XV de Novembro   | São Miguel do Oeste | 89900000 |             | joao@email.com | Informe seu telefone          | Não finalizar compra do usuário |
             | Joao | Silva Sauro | Brasil | Rua XV de Novembro   | São Miguel do Oeste | 89900000 | 49999999999 |                | Informe seu e-mail            | Não finalizar compra do usuário |
+
+
+            Esquema do Cenário: E-mail com formato válido
+            Quando eu preencher todos os campos obrigatórios
+            E inserir o e-mail <email>
+            E clicar tentar finalizar a compra
+            Então o sistema deve exibir a mensagem de erro <mensagem>
+
+            | email            | mensagem                   |
+            | gabriel@ebac     | Formato de e-mail inválido |
+            | gabriel@ebac,com | Formato de e-mail inválido |
+            | gabrielebac      | Formato de e-mail inválido |
+            | gabriel@         | Formato de e-mail inválido |
+            | gabriel@ebac.    | Formato de e-mail inválido |
